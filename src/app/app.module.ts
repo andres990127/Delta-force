@@ -4,7 +4,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { AccordionModule } from 'ngx-bootstrap/accordion'; /* Importado manualmente -- Importa animaciones de Bootstrap */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; /* Importado manualmente -- Importa animaciones de Bootstrap como el acordeon en este caso */
-import { AppRoutingModule } from './app-routing.module';
+import { routing, appRoutingProviders } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 
@@ -34,6 +34,8 @@ import { EliminarEmprendimientoComponent } from './components/eliminar-emprendim
 import { EliminarConsultoriaComponent } from './components/eliminar-consultoria/eliminar-consultoria.component';
 import { ActualizarEmprendimientoComponent } from './components/actualizar-emprendimiento/actualizar-emprendimiento.component';
 import { ActualizarConsultoriasComponent } from './components/actualizar-consultorias/actualizar-consultorias.component';
+import { ReportesConsultoriasComponent} from './components/reportes-consultorias/reportes-consultorias.component';
+// pipes
 import { FilterUserPipe } from './pipes/filter.pipe';
 import { FilterEmprendedorPipe } from './pipes/filter-emprendedor.pipe';
 import { FilterConsultorPipe } from './pipes/filter-consultor.pipe';
@@ -72,6 +74,7 @@ import { FilterConsultoriaPipe } from './pipes/filter-consultoria.pipe';
     EliminarConsultoriaComponent,
     ActualizarEmprendimientoComponent,
     ActualizarConsultoriasComponent,
+    ReportesConsultoriasComponent,
     FilterUserPipe,
     FilterEmprendedorPipe,
     FilterConsultorPipe,
@@ -84,14 +87,17 @@ import { FilterConsultoriaPipe } from './pipes/filter-consultoria.pipe';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    routing,
+/*     AppRoutingModule, */
     FormsModule,
     FullCalendarModule, // for FullCalendar!
     AccordionModule.forRoot(), /* Añadido manualmente -- Importo animacion acordeon Bootstrap -- forRoot() para funcionar en toda la aplicacion */
     BrowserAnimationsModule, /* Añadido manualmente -- Modulo para Animaciones Bootstrap */
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    appRoutingProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
